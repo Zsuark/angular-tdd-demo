@@ -10,11 +10,10 @@ Demonstrate a feature with TDD.
 
 Angular JS uses an MVC design pattern implemented in JavaScript. It's only target is the web.
 
-Angular is a complete rewrite, uses TypeScript and has lost the MVC pattern in favour of better techniques for Reactive Applications.
+Angular is a complete rewrite, uses TypeScript and has lost the MVC pattern in favour of other techniques for Reactive Applications.
 
  - [Reactive Programming in Angular](https://blog.nrwl.io/reactive-programming-in-angular-7dcded697e6c)
- - [Does TypeScript Offer Security Improvements Over JavaScript?](https://www.nccgroup.com/uk/about-us/newsroom-and-events/blogs/2015/october/does-typescript-offer-security-improvements-over-javascript/)
-
+ - [TypeScript](https://www.typescriptlang.org/)
 
 ## Testing in Angular
 
