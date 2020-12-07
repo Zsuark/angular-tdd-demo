@@ -134,4 +134,112 @@ Test specs:         `src/app/app.component.spec.ts`
 Components are stored in the directory `src/app/<component name>` and they have the same set of files as the root component.
 
 
-# Writ
+# Writing tests
+
+## Changing the application title
+
+Let's change the application title to be "Angular TDD Example Application"
+
+### Change the tests
+
+In the file src/app/app.component.spec.ts, change:
+
+```typescript
+  it(`should have as title 'angular-tdd-demo'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('angular-tdd-demo');
+  });
+  ```
+
+to:
+
+```typescript
+  it(`should have as title 'Angular TDD Example Application'`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('Angular TDD Example Application');
+  });
+  ```
+
+### Run the tests
+
+`ng test`
+
+There modified test should now fail.
+
+### Modify the component
+
+Edit src/app/app.component.ts
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'angular-tdd-demo';
+}
+```
+
+Change
+```
+  title = 'angular-tdd-demo';
+```
+
+To
+```
+  title = 'Angular TDD Example Application';
+```
+
+Change the title appropriately, and check that your test has automatically turned green.
+
+## Changing the view
+
+The view should only contain the title, as header level 1.
+
+__*NOTE:* We only ever reference the root AppComponent as `app` -- Use `component` for regular components.__
+
+For reference:
+
+ - [The TypeScript Handbook](https://www.typescriptlang.org/docs/handbook/intro.html)
+ - [Angular unit testing 101 (with examples)](https://dev.to/mustapha/angular-unit-testing-101-with-examples-6mc)
+ - [Testing](https://angular.io/guide/testing) (Angular site)
+
+ TODO: How do we setup CI?
+
+### Extend the tests
+
+```typescript
+  it(`should render the title in an <h1> tag -- <h1>${ title }</h1>`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const element = fixture.nativeElement;
+    const h1 = element.querySelector("h1");
+    fixture.detectChanges();
+    expect(h1.textContent).toEqual(title);
+  });
+```
+
+The variable `title` is actually a const declared in the text suite. 
+
+Don't forget to `ng test` if tests aren't already running
+
+### Modify the template
+
+The file `src/app/app.component.css` should be empty.
+
+The file `src/app/app.component.html` should only contain:
+
+```html
+<h1>{{ title }}</h1>
+```
+
+### Success!
+
+
+# Additional references
+
+ - [Testing Angular Directives: Using HTMLElement](https://medium.com/@joshblf/testing-angular-directives-dc8bffff5fa2)
