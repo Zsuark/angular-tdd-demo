@@ -82,15 +82,18 @@ The software anatomy of an Angular application is constructed of:
 
 # Start a new Angular project
 
-`ng new angular-tdd-demo --strict`
-`cd angular-tdd-demo`
-
+```bash
+ng new angular-tdd-demo --strict
+cd angular-tdd-demo
+```
 
 # Demo the project
 
-`ng test`
-`ng serve --open` - the open option opens your web browser to the application.
-
+```bash
+ng test
+ng serve --open
+```
+ - the open option opens your web browser to the application.
 
 The test command compiles the code and uses Karma to open and control a chrome instance to run the tests.
 
@@ -129,7 +132,9 @@ Test specs:         `src/app/app.component.spec.ts`
 
 ## Generating a new component
 
-`ng generate component item-list`
+```bash
+ng generate component item-list
+```
 
 Components are stored in the directory `src/app/<component name>` and they have the same set of files as the root component.
 
@@ -164,7 +169,9 @@ to:
 
 ### Run the tests
 
-`ng test`
+```bash
+ng test
+```
 
 There modified test should now fail.
 
@@ -186,12 +193,12 @@ export class AppComponent {
 ```
 
 Change
-```
+```typescript
   title = 'angular-tdd-demo';
 ```
 
 To
-```
+```typescript
   title = 'Angular TDD Example Application';
 ```
 
