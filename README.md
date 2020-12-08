@@ -31,11 +31,13 @@ Please take a moment to get back to basics with TDD.
 
 > Three Laws of TDD.
 >
->     You must write a failing test before you write any production code.
->     You must not write more of a test than is sufficient to fail, or fail to compile.
->     You must not write more production code than is sufficient to make the currently failing test pass.
+>     1. You must write a failing test before you write any production code.
+>     2. You must not write more of a test than is sufficient to fail, or fail to compile.
+>     3. You must not write more production code than is sufficient to make the currently failing test pass.
 
  - [The Cycles of TDD](https://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html) by Robert C. Martin (Uncle Bob) on [The Clean Code Blog](https://blog.cleancoder.com/)
+
+ Also see:
  - [Test-Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html) by Martin Fowler
  - [The The Laws of TDD](https://www.youtube.com/watch?v=AoIfc5NwRks) by Uncle Bob on YouTube.
 
@@ -160,7 +162,7 @@ In the file src/app/app.component.spec.ts, change:
 to:
 
 ```typescript
-  it(`should have as title 'Angular TDD Example Application'`, () => {
+  it(`should have 'Angular TDD Example Application' as the title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Angular TDD Example Application');
@@ -230,23 +232,24 @@ For reference:
   });
 ```
 
-The variable `title` is actually a const declared in the text suite. Please change other instances of the title to reference the const instead.
+The variable `title` is actually a const declared in the text suite. Please change other instances of the title to refer to the const `title` instead.
 
 The title is declared at the start of the description.
+
 ```typescript
 describe('AppComponent', () => {
 
   const title = 'Angular TDD Example Application';
-...
-```
 
-For example, the previous test should now look like
-```typescript
-  it(`should have as title '${ title }'`, () => {
+...
+
+  it(`should have '${ title }' as the title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual(title);
   });
+
+...
 ```
 
 Don't forget to `ng test` if tests aren't already running
@@ -263,7 +266,7 @@ The file `src/app/app.component.html` should only contain:
 
 ### Success!
 
-
-# Additional references
+## Additional reference
 
  - [Testing Angular Directives: Using HTMLElement](https://medium.com/@joshblf/testing-angular-directives-dc8bffff5fa2)
+
